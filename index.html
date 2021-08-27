@@ -29,7 +29,7 @@
  </P>
 <BR>
 <H2 align="CENTER">
-   Bienvenid@s al sitio Web
+   Bienvenid@s al sitio Web. <span id="contador" style="font-size:4mm;"></span>
 </H2>
 <BR>
 <P ALIGN="JUSTIFY">
@@ -54,5 +54,23 @@
 </CENTER>
 <BR>
 <BR>
+  <script>
+    var m=0;
+    function galleta() {
+    var regexpc=new RegExp(/visitas=[1-9]*[0-9]+/);
+    var num=0;
+    var arrcookie=regexpc.exec(document.cookie);
+    
+    if(arrcookie==null)
+       document.cookie="visitas=0";
+    
+    arrcookie = regexpc.exec(document.cookie);
+    var num=parseInt( arrcookie[0].substring(8) ) + 1;
+    var contador=document.getElementById("contador");
+    contador.innerHTML=" Ha visitado esta página por "+num+"a. vez.";
+    document.cookie="visitas="+num;m++;
+    console.log(document.cookie+m);
+    }
+    </script>
 </BODY>
 </HTML>
