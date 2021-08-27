@@ -68,7 +68,7 @@ onload="galleta();">
     arrcookie = regexpc.exec(document.cookie);
     var num=parseInt( arrcookie[0].substring(8) ) + 1;
     var contador=document.getElementById("contador");
-    contador.innerHTML=" Ha visitado esta página por "+num+"a. vez.";
+    contador.innerHTML=" Ha visitado esta p&aacute;gina por "+num+"a. vez.";
     document.cookie="visitas="+num;m++;
     console.log(document.cookie+m);
     }
