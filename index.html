@@ -57,20 +57,32 @@ onload="galleta();">
 <BR>
   <script>
     var m=0;
+    var nombre=null;
+    var regexpn=new RegExp(/nombre=[a-z]{3,}/gi);
+
+    nombre = regexpn.exec(document.cookie);
+    if(nombre==null) {
+      nombre=prompt("Favor ingresa tu nombre: ");
+       document.cookie="nombre="+nombre;
+    }
+    else
+       nombre = nombre[0].substring(7);
+
     function galleta() {
-    var regexpc=new RegExp(/visitas=[1-9]*[0-9]+/);
-    var num=0;
-    var arrcookie=regexpc.exec(document.cookie);
+       var regexpc=new RegExp(/visitas=[1-9]*[0-9]+/);
+       
+       var num=0;
+       var arrcookie=regexpc.exec(document.cookie);
     
-    if(arrcookie==null)
-       document.cookie="visitas=0";
+       if(arrcookie==null)
+          document.cookie="visitas=0";
     
-    arrcookie = regexpc.exec(document.cookie);
-    var num=parseInt( arrcookie[0].substring(8) ) + 1;
-    var contador=document.getElementById("contador");
-    contador.innerHTML=" Ha visitado esta p&aacute;gina por "+num+"a. vez.";
-    document.cookie="visitas="+num;m++;
-    console.log(document.cookie+m);
+       arrcookie = regexpc.exec(document.cookie);
+       var num=parseInt( arrcookie[0].substring(8) ) + 1;
+       var contador=document.getElementById("contador");
+       contador.innerHTML=" *"+nombre+" Ha visitado esta página por "+num+"a. vez.";
+       document.cookie="visitas="+num;m++;
+       console.log(document.cookie+m);
     }
     </script>
 </BODY>
